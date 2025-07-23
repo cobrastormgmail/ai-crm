@@ -25,11 +25,12 @@ jobs:
       - name: Deploy infraestructura con Bicep
         run: |
           az deployment group create \
-          --resource-group rg-ai-crm \
-          --template-file infra/main.bicep \
-          --parameters functionAppName=funcaicrmclean \
-                      storageAccountName=stcrmaicrmclean01 \
-                      keyVaultName=kvaicrmclean
+            --resource-group rg-ai-crm \
+            --template-file infra/main.bicep \
+            --parameters functionAppName=funcaicrmv2 \
+                        storageAccountName=stcrmaicrmv2001 \
+                        hostingPlanName=plan-ai-crm-linux
+
 
       - name: Deploy código de Function App
         uses: azure/webapps-deploy@v2
