@@ -18,10 +18,14 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Crear resource group si no existe
+        run: |
+          az group create --name rg-ai-crm --location uksouth
+
       - name: Deploy infraestructura con Bicep
         run: |
-          az deployment sub create \
-            --location uksouth \
+          az deployment group create \
+            --resource-group rg-ai-crm \
             --template-file infra/main.bicep \
             --parameters functionAppName=func-ai-crm2 \
                         storageAccountName=stcrm1753223711 \
