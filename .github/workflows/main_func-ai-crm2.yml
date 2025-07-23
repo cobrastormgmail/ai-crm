@@ -30,4 +30,10 @@ jobs:
           --parameters functionAppName=funcaicrmclean \
                       storageAccountName=stcrmaicrmclean01 \
                       keyVaultName=kvaicrmclean
-        
+
+      - name: Deploy código de Function App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: funcaicrmclean
+          slot-name: production
+          package: .
