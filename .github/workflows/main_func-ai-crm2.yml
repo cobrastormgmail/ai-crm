@@ -25,8 +25,9 @@ jobs:
       - name: Deploy infraestructura con Bicep
         run: |
           az deployment group create \
-            --resource-group rg-ai-crm \
-            --template-file infra/main.bicep \
-            --parameters functionAppName=func-ai-crm2 \
-                        storageAccountName=stcrm1753223711 \
-                        keyVaultName=kv-ai-crm
+          --resource-group rg-ai-crm \
+          --template-file infra/main.bicep \
+          --parameters functionAppName=funcaicrmclean \
+                      storageAccountName=stcrmaicrmclean01 \
+                      keyVaultName=kvaicrmclean
+        
