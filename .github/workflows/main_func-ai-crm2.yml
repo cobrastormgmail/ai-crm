@@ -20,7 +20,7 @@ jobs:
 
       - name: Crear resource group si no existe
         run: |
-          az group create --name rg-ai-crm --location uksouth
+          az group create --name rg-ai-crm --location eastus
 
       - name: Deploy infraestructura con Bicep
         run: |
