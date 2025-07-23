@@ -35,28 +35,19 @@ resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
   }
 }
 
-resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
+resource functionApp 'Microsoft.Web/sites@2022-09-01' = {
   name: functionAppName
   location: location
   kind: 'functionapp,linux'
-  identity: {
-    type: 'SystemAssigned'
-  }
   properties: {
-    serverFarmId: plan.id
+    serverFarmId: hostingPlan.id
     siteConfig: {
-      linuxFxVersion: 'Python|3.11'
-      appSettings: [
-        {
-          name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: 'python'
-        }
-        {
-          name: 'WEBSITE_RUN_FROM_PACKAGE'
-          value: '1'
-        }
-      ]
+      linuxFxVersion: 'PYTHON|3.11'
+      alwaysOn: true
     }
     httpsOnly: true
+  }
+  identity: {
+    type: 'SystemAssigned'
   }
 }
