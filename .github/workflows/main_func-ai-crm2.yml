@@ -35,6 +35,7 @@ jobs:
       - name: Deploy código de Function App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: funcaicrmclean
+          app-name: funcaicrmv2          # ← debe coincidir con el nombre del Bicep
           slot-name: production
           package: .
+
