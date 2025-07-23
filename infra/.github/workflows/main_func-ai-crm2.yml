@@ -26,10 +26,3 @@ jobs:
             --parameters functionAppName=func-ai-crm2 \
                         storageAccountName=stcrm1753223711 \
                         keyVaultName=kv-ai-crm
-
-      - name: Publicar código Function App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: func-ai-crm2
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FUNC_AI_CRM2 }}
-          package: .
